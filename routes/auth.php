@@ -21,7 +21,9 @@ Route::get('/fb/redirect', function (Request $request) {
 })->name('fb-redirect');
 
 Route::get('/fb/login', function (Request $request) {
-    $u = Socialite::driver('facebook')->user();
+    $u = Socialite::driver('facebook')
+        ->with(['redirect_uri' => route('fb-login'),])
+        ->user();
     var_dump($u);
     exit;
 })->name('fb-login');
