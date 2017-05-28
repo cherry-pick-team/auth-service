@@ -16,13 +16,11 @@ Route::get('/me', function (Request $request) {
 Route::get('/fb/redirect', function (Request $request) {
     return Socialite::driver('facebook')
         ->scopes(['email', 'user_likes',])
-        ->with(['redirect_uri' => route('fb-login'),])
         ->redirect();
 })->name('fb-redirect');
 
 Route::get('/fb/login', function (Request $request) {
     $u = Socialite::driver('facebook')
-        ->with(['redirect_uri' => route('fb-login'),])
         ->user();
     var_dump($u);
     exit;

@@ -17,7 +17,7 @@ return [
     'facebook' => [
         'client_id' => '1763856620597247',
         'client_secret' => '1049ae592a84710ece058db6614b14ce',
-        'redirect' => '',
+        'redirect' => 'https://zsong.ru/auth/fb/login',
     ],
 
 ];
