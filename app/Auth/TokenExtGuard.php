@@ -2,10 +2,11 @@
 
 namespace App\Auth;
 
+use App\UserToken;
 use Illuminate\Auth\GuardHelpers;
-use Illuminate\Http\Request;
 use Illuminate\Contracts\Auth\Guard;
 use Illuminate\Contracts\Auth\UserProvider;
+use Illuminate\Http\Request;
 
 class TokenExtGuard implements Guard
 {
@@ -142,5 +143,22 @@ class TokenExtGuard implements Guard
         $this->request = $request;
 
         return $this;
+    }
+
+    /**
+     * Log the user out of the application.
+     *
+     * @return void
+     */
+    public function logout()
+    {
+        $user = $this->user();
+        $token = $this->getTokenForRequest();
+
+        if(!empty($token)) {
+            UserToken::where('token', $token)->delete();
+        }
+
+        $this->user = null;
     }
 }

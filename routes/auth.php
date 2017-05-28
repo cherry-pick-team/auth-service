@@ -3,6 +3,7 @@
 use App\User;
 use App\UserToken;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\Hash;
 use Laravel\Socialite\Facades\Socialite;
@@ -78,4 +79,6 @@ Route::get('/fb/login', function (Request $request) {
 })->name('fb-login');
 
 Route::get('/logout', function (Request $request) {
+    Auth::logout();
+    return response('');
 })->name('logout');
