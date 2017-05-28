@@ -50,9 +50,9 @@ class TokenExtGuard implements Guard
     {
         $this->request = $request;
         $this->provider = $provider;
-        $this->inputKey = 'token';
-        $this->storageKey = 'token';
-        $this->cookieKey = 'secret_token';
+        $this->inputKey = 'api_token';
+        $this->storageKey = 'api_token';
+        $this->cookieKey = 'api_token';
     }
 
     /**
