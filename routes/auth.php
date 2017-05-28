@@ -18,9 +18,10 @@ Route::get('/me', function (Request $request) {
 })->name('user');
 
 Route::get('/fb/redirect', function (Request $request) {
+    Cookie::queue('mobile', $request->get('mobile'), 3600);
     return Socialite::driver('facebook')
         ->scopes(['email', 'user_likes',])
-        ->redirect()->cookie('mobile', $request->get('mobile'), 3600);
+        ->redirect();
 })->name('fb-redirect');
 
 Route::get('/fb/login', function (Request $request) {
