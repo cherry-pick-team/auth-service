@@ -18,7 +18,8 @@ Route::get('/me', function (Request $request) {
 })->name('user');
 
 Route::get('/fb/redirect', function (Request $request) {
-    Cookie::queue('mobile', $request->get('mobile'), 3600);
+    $request->session()->put('mobile', $request->get('mobile'));
+
     return Socialite::driver('facebook')
         ->scopes(['email', 'user_likes',])
         ->redirect();
@@ -69,7 +70,7 @@ Route::get('/fb/login', function (Request $request) {
     ]);
 
     $redirectUrl = '/';
-    if ($request->cookie('mobile')) {
+    if ($request->session()->get('mobile')) {
         $redirectUrl = 'ShoZaSong://login?api_token=' . $token->token;
     }
 
