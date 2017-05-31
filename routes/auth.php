@@ -36,6 +36,7 @@ Route::get('/fb/login', function (Request $request) {
 
     $facebookId = $u->id;
     $name = $u->name;
+    $avatar = $u->avatar;
 
     $user = User::where('fb_id', $facebookId)->first();
 
@@ -44,6 +45,7 @@ Route::get('/fb/login', function (Request $request) {
             'name' => $name,
             'password' => Hash::make(rand() . $facebookId . rand()),
             'fb_id' => $facebookId,
+            'avatar_url' => $avatar,
         ]);
     }
 
