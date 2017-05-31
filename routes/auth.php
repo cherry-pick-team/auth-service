@@ -36,7 +36,7 @@ Route::get('/fb/login', function (Request $request) {
 
     $facebookId = $u->id;
     $name = $u->name;
-    $avatar = $u->avatar;
+    $avatar = $u->avatar_original;
 
     $user = User::where('fb_id', $facebookId)->first();
 
