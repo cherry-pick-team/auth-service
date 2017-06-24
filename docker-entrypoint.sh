@@ -1,8 +1,8 @@
 #!/bin/sh
 set -e
 
-echo "Migrating..."
-php artisan migrate
+# echo "Migrating..."
+# php artisan migrate
 
 # Then execute CMD
 # first arg is `-f` or `--some-option`
